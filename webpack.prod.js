@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge');
 const common = require('./webpack.config.js');
 const webpack = require('webpack');
 const SentryPlugin = require('@sentry/webpack-plugin');
+const DeleteSourceMapWebpackPlugin = require('./webpackDeleteSourcemapPlugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -15,5 +16,6 @@ module.exports = merge(common, {
       include: './dist',
       configFile: '.sentryclirc',
     }),
+    new DeleteSourceMapWebpackPlugin(),
   ],
 });

@@ -8,7 +8,7 @@ export function App(): JSX.Element {
       <p>当前版本为{__NPM_VERSION__}</p>
       <button
         onClick={() => {
-          (window as any).notexists_001();
+          (window as any).notexists_002();
         }}
       >
         崩溃
