@@ -1,0 +1,6 @@
+[auth]
+token=xxxxxxxx
+
+[defaults]
+project=yyy
+org=zzz

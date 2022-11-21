@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config.js');
-const config = require('./package.json');
+const config = require('./project.json');
 const webpack = require('webpack');
 
 const now = new Date();
@@ -11,7 +11,7 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   plugins: [
     new webpack.DefinePlugin({
-      __NPM_VERSION__: JSON.stringify(require('./package.json').version),
+      __NPM_VERSION__: JSON.stringify(require('./project.json').version),
     }),
   ],
   devServer: {

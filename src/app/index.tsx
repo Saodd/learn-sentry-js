@@ -6,6 +6,13 @@ export function App(): JSX.Element {
     <div id={'app'}>
       <p className={styles.myClass}>Hello, Lewin!</p>
       <p>当前版本为{__NPM_VERSION__}</p>
+      <button
+        onClick={() => {
+          (window as any).notexists_001();
+        }}
+      >
+        崩溃
+      </button>
     </div>
   );
 }
