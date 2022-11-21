@@ -17,4 +17,9 @@ const initSentryWeb = (): void => {
 };
 initSentryWeb();
 
-ReactDOM.render(React.createElement(App), document.querySelector('app-root'));
+let root: HTMLDivElement = document.querySelector('app-root');
+if (!root) {
+  root = document.createElement('div');
+  document.body.appendChild(root);
+}
+ReactDOM.render(React.createElement(App), root);

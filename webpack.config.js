@@ -10,7 +10,7 @@ module.exports = {
   },
   target: ['web', 'es5'],
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -22,7 +22,23 @@ module.exports = {
       chunks: ['index'],
     }),
     new CopyPlugin({
-      patterns: [{ from: 'static', to: '.' }],
+      patterns: [
+        // { from: 'static', to: '.' },
+        {
+          from: 'static/manifest.json',
+          to: 'manifest.json',
+          transform: {
+            transformer(content, absoluteFrom) {
+              if (absoluteFrom.indexOf('manifest.json') >= 0) {
+                const data = content.toString();
+                return data.replace('__BO_PROJECT_VERSION__', require('./project.json').version);
+              }
+              return content;
+            },
+            cache: true,
+          },
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
