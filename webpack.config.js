@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Project Template: React',
+      title: 'Learn Sentry JS',
       template: './src/index.html',
       favicon: './src/favicon.ico',
       chunks: ['index'],
@@ -31,7 +31,7 @@ module.exports = {
             transformer(content, absoluteFrom) {
               if (absoluteFrom.indexOf('manifest.json') >= 0) {
                 const data = content.toString();
-                return data.replace('__BO_PROJECT_VERSION__', require('./project.json').version);
+                return data.replace('__NPM_VERSION__', require('./project.json').version);
               }
               return content;
             },
